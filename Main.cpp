@@ -26,7 +26,15 @@ private:
 		int PlayerAttack = 10;
 	};
 
+	struct Inventory {
+		int HPpotions = 0;
+		int MPpotions = 0;
+		int Material = Iron;
+		int Weapon = dagger;
+	};
+
 	GameCharacter character;
+	Inventory Stash;
 
 
 public:
@@ -47,7 +55,7 @@ public:
 
 	void Attack(int& enemyHealth) {
 
-		int damage = character.PlayerAttack + WeaponOnAttack(4, 1);
+		int damage = character.PlayerAttack + WeaponOnAttack(Stash.Material, Stash.Weapon);
 
 		cout << "\n" << character.name << " attacks!\n";
 
@@ -56,6 +64,18 @@ public:
 		cout << "You dealt " << damage  << " damage!\n";
 
 		cout << "Enemy health: " << enemyHealth << "\n";
+	}
+
+	void PissYourSelf(){
+		character.health = character.health - 2;
+
+		cout << "\n--- YOUR TURN ---\n";
+		cout << "Pissed your pants in fear\n";
+
+		cout << character.name << " took " << "2 damage!\n";
+
+		cout << "Your health: " << character.health << "\n";
+
 	}
 
 
@@ -108,10 +128,10 @@ void FightStyle(Player User1, int EnemyHealth, int EnemyHit) {
 				cout << "\nThe undead has been defeated!\n";
 				break;
 
-				
+
 
 			}
-			
+
 
 			// ENEMY TURN
 			int EnemyAttack = EnemyHit;
@@ -125,14 +145,27 @@ void FightStyle(Player User1, int EnemyHealth, int EnemyHit) {
 		else if (PVBChoice == 2) {
 
 			cout << "\n\n--- ENEMY TURN ---\n\n";
-			
+
 			cout << "Attack was ineffective\n ";
+
+			ContinueAtk();
+		}
+		else {// make more elseifs to get word input to givew pissyourself
+
+			User1.PissYourSelf();
+
+			// ENEMY TURN
+			int EnemyAttack = EnemyHit;
+
+			cout << "\n--- ENEMY TURN ---\n";
+
+			User1.TakeDamage(EnemyAttack);
 
 			ContinueAtk();
 		}
 
 
-		
+
 
 
 
@@ -150,6 +183,7 @@ void FightStyle(Player User1, int EnemyHealth, int EnemyHit) {
 	}
 
 }
+
 
 
 int main() {
@@ -198,7 +232,9 @@ int main() {
 
 	FightStyle(User1, EnemyHealth, EnemyHit);
 
-	cout << "you did't die, i'm suprised";
+	cout << "\nyou did't die, i'm suprised";
+
+
 	return 0;
 
 

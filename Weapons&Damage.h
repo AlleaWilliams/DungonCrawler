@@ -3,6 +3,7 @@
 using namespace std;
 
 enum Weapons {
+	Hand,
 	dagger,
 	ShortBlade,
 	BattelAxe,
@@ -10,6 +11,7 @@ enum Weapons {
 	HeroBlade,
 };
 enum Material {
+	Flesh,
 	Wood,
 	Stone,
 	Copper,
@@ -149,6 +151,11 @@ int WeaponOnAttack(int WeaponMaterial, int WeaponAtk) {
 			break;
 		}
 		break;
+	case Flesh:
+		switch (WeaponAtk) {
+		case Hand:
+			return 0;
+		}
 
 	};
 
