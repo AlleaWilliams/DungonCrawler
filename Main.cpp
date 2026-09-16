@@ -3,6 +3,8 @@
 #include <string>
 using namespace std;
 
+
+
 void ContinueAtk() {
 	cout << "\nPress Enter to continue...\n";
 	cin.ignore();
@@ -31,10 +33,46 @@ private:
 		int MPpotions = 0;
 		int Material = Iron;
 		int Weapon = dagger;
+		///////Loot////////////////////////////////////////////////////
+		int _Pelvis = 0;
+		int Bone_Marrow = 0;
+		int Strudy_Femur = 0;
+		int Ball_Of_Worms = 0;
+		int Mass_Of_Rotten_Organs = 0;
+		int _Rib = 0;
+		int _Skull = 0;
+		int Brown_Cloth = 0;
+		int _Claws = 0;
+		int Icy_Blue_Eyes = 0;
+		int Golden_Tooth = 0;
+		int Goblin_Ear = 0;
+		int Loin_Cloth = 0;
+		int Brain_Matter = 0;
+		int DEEZ_NUTS = 0
+
+	};
+
+	class BankAccount
+	{
+	private:
+		int balance = 0;
+	public:
+		void deposit(int amount) {
+			balance += amount;
+		}
+		void withdraw(int amount) {
+			balance -= amount;
+		}
+		int GetBalance() {
+			return balance;
+
+		}
+
 	};
 
 	GameCharacter character;
 	Inventory Stash;
+	BankAccount Mune;
 
 
 public:

@@ -26,7 +26,7 @@
     <ClInclude Include="Weapons&amp;Damage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MAGICCCA.h">
+    <ClInclude Include="EnemyDetails.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
