@@ -189,12 +189,7 @@ int main() {
 
 	ContinueStory();
 
-
-	cout << "\nA undead jumps out of the darkness!\n";
-
-	ContinueStory();
-
-	FightStyle(User1, EnemyHealth, EnemyHit);
+	FightStyle(User1, enemy);
 
 	cout << "\nyou did't die, i'm suprised";
 

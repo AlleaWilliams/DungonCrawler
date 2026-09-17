@@ -1,4 +1,5 @@
 #pragma once
+#include "Main.cpp"
 #include "EnemyDetails.h"
 #include "Weapons&Damage.h"
 #include <iostream>
@@ -7,10 +8,19 @@ using namespace std;
 
 
 
-void FightStyle(Player User1, int EnemyHealth, int EnemyHit) {
-	while (User1.GetHealth() > 0 && EnemyHealth > 0) {
+void FightStyle(Player User1, SmallMonsters Enemy) {
+	Enemy.GetMonsterType();
+	cout << "A fight starts with the local monsters.";
+
+	while (User1.GetHealth() > 0 && Enemy.GetEnemyHealth() > 0) {
+
+		cout << "\n Enemy: " << Enemy.GetEnemyName()
+			<< "\nHealth: " << Enemy.GetEnemyHealth()
+			<< "\n";
+
 
 		// PLAYER TURN
+		int EnemyHealth = Enemy.GetEnemyHealth();
 		int PVBChoice;
 
 		cout << "\n--- YOUR TURN ---\n";
@@ -18,7 +28,7 @@ void FightStyle(Player User1, int EnemyHealth, int EnemyHit) {
 
 		cin >> PVBChoice;
 
-		if (PVBChoice == 1) {
+		if (PVBChoice == 1) { ////////////////////PLAYER ATTACK
 
 			User1.Attack(EnemyHealth);
 
@@ -34,40 +44,45 @@ void FightStyle(Player User1, int EnemyHealth, int EnemyHit) {
 
 
 			// ENEMY TURN
-			int EnemyAttack = EnemyHit;
+			int EnemyAttack = Enemy.GetEnemyDamage();
 
 			cout << "\n--- ENEMY TURN ---\n";
 
 			User1.TakeDamage(EnemyAttack);
 
 			ContinueAtk();
+
+
 		}
-		else if (PVBChoice == 2) {
+		else if (PVBChoice == 2) {/////////////////PLAYER BLOCK
 
 			cout << "\n\n--- ENEMY TURN ---\n\n";
 
 			cout << "Attack was ineffective\n ";
 
 			ContinueAtk();
+
+
+
+
 		}
-		else {// make more elseifs to get word input to givew pissyourself
+		else if (PVBChoice > 2 || PVBChoice < 1) {//////////////////// Other num Blocker || need a letter blocker
 
 			User1.PissYourSelf();
+		}
+		else {
+			User1.PissYourSelf();
 
-			// ENEMY TURN
-			int EnemyAttack = EnemyHit;
-
-			cout << "\n--- ENEMY TURN ---\n";
-
-			User1.TakeDamage(EnemyAttack);
-
-			ContinueAtk();
 		}
 
+		// ENEMY TURN
+		int EnemyAttack = Enemy.GetEnemyDamage();
 
+		cout << "\n--- ENEMY TURN ---\n";
 
+		User1.TakeDamage(EnemyAttack);
 
-
+		ContinueAtk();
 
 		// Check if player died
 
@@ -78,6 +93,7 @@ void FightStyle(Player User1, int EnemyHealth, int EnemyHit) {
 
 		}
 
-
-
 	}
+	
+}
+

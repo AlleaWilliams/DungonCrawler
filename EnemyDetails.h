@@ -1,3 +1,4 @@
+#include "BattleMechanics.h"
 #include "Weapons&Damage.h"
 #include <iostream>
 #include <string>
@@ -23,17 +24,15 @@ enum SkelletonLoot
 	Pelvis,
 	BoneMarrow,
 	StrudyFemur,
-	WeaponWeilded,
-	mune
+	skellMune
 };
 enum ZombieLoot
 {
 	BallOfWorms,
 	MassOfRottenOrgans,
 	ARib,
-	WeaponWeilded,
-	mune
-
+	zomMune,
+	
 };
 enum GhoulLoot
 {
@@ -41,50 +40,54 @@ enum GhoulLoot
 	BrownCloth,
 	Claws,
 	IcyBlueEyes,
-	mune
+	goMune
 };
 enum GoblinLoot
 {
 	GoldenTooth,
 	GoblinEar,
 	LoinCLoth,
-	HPPotion,
-	WeaponWeilded,
-	mune
+	HPpotion,
+	gobMune,
+	
+
 };
 enum MindGoblinLoot
 {
-	GoblinEar,
+	MindGoblinEar,
 	HPPotion,
 	BrainMatter,
-	DEEZNUTS
+	DEEZNUTS,
+	mindMune
 };
 
 enum ItemType
 {
-	Pelvis,
-	BoneMarrow,
-	SturdyFemur,
-	SkeletonWeapon,
+	pelvis,
+	boneMarrow,
+	sturdyFemur,
+	Mune,
 
-	BallOfWorms,
-	MassOfRottenOrgans,
-	ARib,
-	ZombieWeapon,
+	
 
-	Skull,
-	BrownCloth,
-	Claws,
-	IcyBlueEyes,
+	ballOfWorms,
+	massOfRottenOrgans,
+	aRib,
 
-	GoldenTooth,
-	GoblinEar,
-	LoinCloth,
-	HPPotion,
-	GoblinWeapon,
 
-	BrainMatter,
-	DEEZNUTS,
+	skull,
+	brownCloth,
+	claws,
+	icyBlueEyes,
+
+	goldenTooth,
+	goblinEar,
+	loinCloth,
+	hPPotion,
+
+	mindGoblinEar,
+	brainMatter,
+	deezNUTS,
 
 	ItemCount
 };
@@ -99,7 +102,7 @@ private:
 		int health;
 		int damage;
 	};
-
+	
 	SmallMonsterDetails SmallEnemy;
 	MonsterType MonsterTypeSelected;
 
@@ -110,21 +113,21 @@ private:
 		switch (rand() % 4)
 		{
 		case 0:
-			Inventory[Pelvis] += amount;
-
+			Inventory[pelvis] += amount;
+			cout << amount << " Pelvis";
 			break;
 		case 1:
-			Inventory[BoneMarrow] += amount;
-
+			Inventory[boneMarrow] += amount;
+			cout << amount << " Bone marrow";
 			break;
 		case 2:
-			Inventory[SturdyFemur] += amount;
-
-			break;
+			Inventory[sturdyFemur] += amount ;
+			cout << amount << " Sturdy fremur(s)";
 		case 3:
-			Inventory[SkeletonWeapon]++;
-
+			Inventory[Mune] += amount * 5;
+			cout << amount + 6 << " mune(s)";
 			break;
+
 		}
 	}
 
@@ -132,20 +135,21 @@ private:
 	{
 		int amount = rand() % 3 + 1;
 
-		switch (rand() % 3)
+		switch (rand() % 4)
 		{
-		case 0: Inventory[BallOfWorms] += amount; 
+		case 0: Inventory[ballOfWorms] += amount; 
 			cout << amount << " Ball of worm(s)";
 			break;
-		case 1: Inventory[MassOfRottenOrgans] += amount;
+		case 1: Inventory[massOfRottenOrgans] += amount;
 			cout << amount << " Mass of rotten organs";
 			break;
-		case 2: Inventory[ARib] += amount; 
+		case 2: Inventory[aRib] += amount; 
 			cout << amount << " Rid(s)";
 			break;
-		case 3: Inventory[ZombieWeapon]++; 
-			cout << amount << " ill get here eventually";
+		case 3: Inventory[Mune] += amount;
+			cout << amount + 6 << " mune(s)";
 			break;
+
 		}
 	}
 
@@ -153,19 +157,23 @@ private:
 	{
 		int amount = rand() % 3 + 1;
 
-		switch (rand() % 4)
+		switch (rand() % 5)
 		{
-		case 0: Inventory[Skull] += amount; 
+		case 0: Inventory[skull] += amount; 
 			cout << amount << " Skull(s)";
 			break;
-		case 1: Inventory[BrownCloth] += amount; 
+		case 1: Inventory[brownCloth] += amount; 
 			cout << amount << " Brown cloth(s)";
 			break;
-		case 2: Inventory[Claws] += amount; 
+		case 2: Inventory[claws] += amount; 
 			cout << amount << " Claws(s)";
 			break;
-		case 3: Inventory[IcyBlueEyes] += amount; 
+		case 3: Inventory[icyBlueEyes] += amount; 
 			cout << amount << " Icy blue eye(s)";
+			break;
+		case 4: 
+			Inventory[Mune] += amount * 5;
+			cout << amount + 6 << " mune(s)";
 			break;
 		}
 	}
@@ -174,22 +182,23 @@ private:
 	{
 		int amount = rand() % 3 + 1;
 
-		switch (rand() % 4)
+		switch (rand() % 5)
 		{
-		case 0: Inventory[GoldenTooth] += amount; 
+		case 0: Inventory[goldenTooth] += amount; 
 			cout << amount << " Golden tooth(s)";
 			break;
-		case 1: Inventory[GoblinEar] += amount; 
+		case 1: Inventory[goblinEar] += amount; 
 			cout << amount << " Goblin ear(s)";
 			break;
-		case 2: Inventory[LoinCloth] += amount; 
+		case 2: Inventory[loinCloth] += amount; 
 			cout << amount << " Loin cloth(s)";
 			break;
-		case 3: Inventory[HPPotion] += amount; 
+		case 3: Inventory[hPPotion] += amount; 
 			cout << amount << " HP potion(s)";
 			break;
-		case 4: Inventory[GoblinWeapon]++;
-			cout << amount << " ill get here eventually";
+		case 4:
+			Inventory[Mune] += amount * 5;
+			cout << amount + 6 << " mune(s)";
 			break;
 		}
 	}
@@ -198,89 +207,118 @@ private:
 	{
 		int amount = rand() % 3 + 1;
 
-		switch (rand() % 4)
+		switch (rand() % 5)
 		{
-		case 0: Inventory[GoblinEar] += amount;
+		case 0: Inventory[mindGoblinEar] += amount;
 			cout << amount << " GoblinEar(s)";
 			break;
-		case 1: Inventory[HPPotion] += amount;
+		case 1: Inventory[hPPotion] += amount;
 			cout << amount << " HP potion(s)";
 			break;
 
-		case 2: Inventory[BrainMatter] += amount;
+		case 2: Inventory[brainMatter] += amount;
 			cout << amount << " Brain matter(s)";
 			break;
 
-		case 3: Inventory[DEEZNUTS]++;
+		case 3: Inventory[deezNUTS]++;
 			cout << amount << " DEEZNUTS(s)";
+			break;
+		case 4:
+			Inventory[Mune] += amount * 5;
+			cout << amount + 6 << " mune(s)";
 			break;
 		}
 	}
 
 
-
 public:
-	void GetMonsterType() {
 
-		SmallMonsterDetails SmallEnemy;
+	void GetMonsterType()
+	{
+		MonsterTypeSelected = MonsterType(rand() % 5);
 
-		switch (MonsterType(rand() % 5)) {
-
+		switch (MonsterTypeSelected)
+		{
 		case Skelleton:
 			SmallEnemy.name = "Skelleton";
 			SmallEnemy.health = 90;
 			SmallEnemy.damage = 10;
 			break;
+
 		case Zombie:
 			SmallEnemy.name = "Zombie";
 			SmallEnemy.health = 110;
 			SmallEnemy.damage = 20;
 			break;
+
 		case Ghoul:
 			SmallEnemy.name = "Ghoul";
 			SmallEnemy.health = 150;
 			SmallEnemy.damage = 30;
 			break;
+
 		case Goblin:
 			SmallEnemy.name = "Goblin";
 			SmallEnemy.health = 100;
 			SmallEnemy.damage = 10;
 			break;
+
 		case MindGoblin:
 			SmallEnemy.name = "Mind goblin";
 			SmallEnemy.health = 120;
 			SmallEnemy.damage = 15;
 			break;
-
 		}
 	}
 
+	int GetEnemyHealth() {
+		return SmallEnemy.health;
+	}
+
+	int GetEnemyDamage() {
+
+		return SmallEnemy.damage;
+	}
+	string GetEnemyName() {
+		return SmallEnemy.name;
+	}
+	int EnemyTakeDamage(int damage) {
+		SmallEnemy.health -= damage;
+
+		if (SmallEnemy.health < 0) {
+			SmallEnemy.health = 0;
+		}
+	}
 	void GetLoot()
 	{
-		switch ()
+		int MonsterTypeSelected = MonsterType(rand() % 5);
+
+		cout << SmallEnemy.name << " droped:\n";
+		switch (MonsterTypeSelected)
 		{
+
 		case Skelleton:
-			cout << SmallEnemy.name << " droped:\n";
+			
 			GetSkeletonLoot();
 			break;
 
 		case Zombie:
-			cout << SmallEnemy.name << " droped:\n";
+			
 			GetZombieLoot();
 			break;
 
 		case Ghoul:
-			cout << SmallEnemy.name << " droped:\n";
+			
 			GetGhoulLoot();
 			break;
 
 		case Goblin:
-			cout << SmallEnemy.name << " droped:\n";
+			
 			GetGoblinLoot();
 			break;
 
 		case MindGoblin:
-			cout << SmallEnemy.name << " droped:\n";
+			
 			GetMindGoblinLoot();
 			break;
 		}
