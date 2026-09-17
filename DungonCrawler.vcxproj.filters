@@ -29,5 +29,8 @@
     <ClInclude Include="EnemyDetails.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BattleMechanics.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
