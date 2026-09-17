@@ -26,127 +26,127 @@ int WeaponOnAttack(int WeaponMaterial, int WeaponAtk) {
 	switch (WeaponMaterial) {
 	case Wood:
 		switch (WeaponAtk) {
-		case dagger:
+		case 00:
 			return 4;
 			break;
-		case ShortBlade:
+		case 1:
 			return 6;
 			break;
-		case BattelAxe:
+		case 2:
 			return 8;
 			break;
-		case WarHammer:
+		case 3:
 			return 6;
 			break;
 		}
 		break;
 	case Stone:
 		switch (WeaponAtk) {
-		case dagger:
+		case 0:
 			return 5;
 			break;
-		case ShortBlade:
+		case 1:
 			return 7;
 			break;
-		case BattelAxe:
+		case 2:
 			return 8;
 			break;
-		case WarHammer:
+		case 3:
 			return 7;
 			break;
 		}
 		break;
 	case Copper:
 		switch (WeaponAtk) {
-		case dagger:
+		case 0:
 			return 6;
 			break;
-		case ShortBlade:
+		case 1:
 			return 8;
 			break;
-		case BattelAxe:
+		case 2:
 			return 9;
 			break;
-		case WarHammer:
+		case 3:
 			return 8;
 			break;
 		}
 		break;
 	case Bronze:
 		switch (WeaponAtk) {
-		case dagger:
+		case 0:
 			return 7;
 			break;
-		case ShortBlade:
+		case 1:
 			return 9;
 			break;
-		case BattelAxe:
+		case 2:
 			return 10;
 			break;
-		case WarHammer:
+		case 3:
 			return 9;
 			break;
 		}
 	case Iron:
 		switch (WeaponAtk) {
-		case dagger:
+		case 0:
 			return 8;
 			break;
-		case ShortBlade:
+		case 1:
 			return 10;
 			break;
-		case BattelAxe:
+		case 2:
 			return 11;
 			break;
-		case WarHammer:
+		case 3:
 			return 10;
 			break;
 		}
 		break;
 	case Steel:
 		switch (WeaponAtk) {
-		case dagger:
+		case 0:
 			return 9;
 			break;
-		case ShortBlade:
+		case 1:
 			return 11;
 			break;
-		case BattelAxe:
+		case 2:
 			return 12;
 			break;
-		case WarHammer:
+		case 3:
 			return 11;
 			break;
 		}
 		break;
 	case Daimond:
 		switch (WeaponAtk) {
-		case dagger:
+		case 0:
 			return 10;
 			break;
-		case ShortBlade:
+		case 1:
 			return 12;
 			break;
-		case BattelAxe:
+		case 2:
 			return 13;
 			break;
-		case WarHammer:
+		case 3:
 			return 12;
 			break;
 		}
 		break;
 	case Adamantine:
 		switch (WeaponAtk) {
-		case dagger:
+		case 0:
 			return 11;
 			break;
-		case ShortBlade:
+		case 1:
 			return 13;
 			break;
-		case BattelAxe:
+		case 2:
 			return 14;
 			break;
-		case WarHammer:
+		case 3:
 			return 13;
 			break;
 		}

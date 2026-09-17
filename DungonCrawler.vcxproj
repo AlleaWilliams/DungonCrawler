@@ -123,12 +123,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="RNG%27s.h" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BattleMechanics.h" />
     <ClInclude Include="EnemyDetails.h" />
+    <ClInclude Include="PLayer.h" />
     <ClInclude Include="Weapons&amp;Damage.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

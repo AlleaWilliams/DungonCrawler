@@ -1,5 +1,5 @@
-#include "BattleMechanics.h"
 #include "Weapons&Damage.h"
+#define ENEMYDETAILS_H
 #include <iostream>
 #include <string>
 /// <summary>
@@ -123,6 +123,7 @@ private:
 		case 2:
 			Inventory[sturdyFemur] += amount ;
 			cout << amount << " Sturdy fremur(s)";
+			break;
 		case 3:
 			Inventory[Mune] += amount * 5;
 			cout << amount + 6 << " mune(s)";
@@ -291,7 +292,6 @@ public:
 	}
 	void GetLoot()
 	{
-		int MonsterTypeSelected = MonsterType(rand() % 5);
 
 		cout << SmallEnemy.name << " droped:\n";
 		switch (MonsterTypeSelected)
