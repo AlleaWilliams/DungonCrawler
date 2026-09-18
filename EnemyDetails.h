@@ -1,7 +1,9 @@
-#include "Weapons&Damage.h"
+#ifndef ENEMYDETAILS_H
 #define ENEMYDETAILS_H
 #include <iostream>
 #include <string>
+using namespace std;
+#include "Weapons&Damage.h"
 /// <summary>
 /// Monster Type to spawn
 /// </summary>
@@ -283,7 +285,7 @@ public:
 	string GetEnemyName() {
 		return SmallEnemy.name;
 	}
-	int EnemyTakeDamage(int damage) {
+	void EnemyTakeDamage(int damage) {
 		SmallEnemy.health -= damage;
 
 		if (SmallEnemy.health < 0) {
@@ -323,6 +325,8 @@ public:
 			break;
 		}
 	}
-		
-	
+
+
 };
+
+#endif // ENEMYDETAILS_H

@@ -89,7 +89,7 @@ public:
 	}
 
 
-	int Attack(int& enemyHealth) {
+	int Attack(int enemyHealth) {
 
 		return character.PlayerAttack += WeaponOnAttack(Stash.Material, Stash.Weapon);
 	}

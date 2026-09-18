@@ -115,7 +115,7 @@ void FightStyle(Player& User1, SmallMonsters& Enemy)
 
         if (choice == 1)
         {
-            int damage = User1.Attack();
+            int damage = User1.Attack(Enemy.GetEnemyHealth());
             Enemy.EnemyTakeDamage(damage);
 
             cout << "\nYou dealt " << damage << " damage!\n";
