@@ -7,10 +7,8 @@ using namespace std;
 
 
 
-
-
-
 int main() {
+
 	srand(time(NULL)); //GAMBLING
 
 	//// Making A character Skit
