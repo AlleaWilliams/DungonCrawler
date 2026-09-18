@@ -95,7 +95,7 @@ using namespace std;
 //	
 //}
 
-void FightStyle(Player& User1, SmallMonsters& Enemy)
+void FightStyle(Player User1, SmallMonsters& Enemy)
 {
     cout << "A fight starts with the local monsters.\n";
 
@@ -108,6 +108,7 @@ void FightStyle(Player& User1, SmallMonsters& Enemy)
 
         int choice;
         bool defending = false;
+        string Healing;
 
         cout << "\n--- YOUR TURN ---\n";
         cout << "1) Attack\n2) Defend\n";
@@ -130,11 +131,18 @@ void FightStyle(Player& User1, SmallMonsters& Enemy)
         else if (choice == 2)
         {
             defending = true;
-            cout << "\nYou prepare to defend!\n";
+            cout << "\nYou defend!\n";
+            cout << "Use A health potion? (y/n)";
+            cin >> Healing;
+            if (Healing == "y") {
+                /*User1.UseHPPotion();*/
+            }
+
+  
         }
         else
         {
-            cout << "\nInvalid choice. Try again.\n";
+            User1.PissYourSelf();
             continue;
         }
 

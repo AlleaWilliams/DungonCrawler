@@ -68,12 +68,41 @@ private:
 	};
 
 	GameCharacter character;
-	Inventory Stash;
+	
 	BankAccount Mune;
 
+	Inventory Stash;
 
 public:
+	
+	//void UseHPPotion()
+	//{
+	//	if (Inventory[HPpotion] > 0)
+	//	{
+	//		if (character.health >= 100)
+	//		{
+	//			cout << "\nYour health is already full!\n";
+	//			return;
+	//		}
 
+	//		Inventory[hPPotion]--;
+
+	//		character.health += 20;
+
+	//		if (character.health > 100)
+	//		{
+	//			character.health = 100;
+	//		}
+
+	//		cout << "\nYou used an HP potion!";
+	//		cout << "\nYour health is now: "
+	//			<< character.health << "\n";
+	//	}
+	//	else
+	//	{
+	//		cout << "\nYou don't have any HP potions!\n";
+	//	}
+	//}
 
 	void SetGameCharacter() {
 
