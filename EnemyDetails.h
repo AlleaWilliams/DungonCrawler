@@ -1,8 +1,9 @@
-#ifndef ENEMYDETAILS_H
-#define ENEMYDETAILS_H
+#pragma once
 #include <iostream>
 #include <string>
 using namespace std;
+#define ENEMYDETAILS_H
+#include "Weapons&Damage.h" // moved down to keep include order consistent (no functional change)
 #include "Weapons&Damage.h"
 /// <summary>
 /// Monster Type to spawn
@@ -93,7 +94,7 @@ enum ItemType
 
 	ItemCount
 };
-int Inventory[ItemCount] = { 0 };
+extern int Inventory[ItemCount];
 
 
 
@@ -329,4 +330,3 @@ public:
 
 };
 
-#endif // ENEMYDETAILS_H

@@ -1,15 +1,18 @@
 #include "BattleMechanics.h"
+#include "Shop.h"
 #include "EnemyDetails.h"
 #include "Weapons&Damage.h"
 #include <iostream>
 #include <string>
+#include <ctime>
 using namespace std;
 
 
+int Inventory[ItemCount] = { 0 };
 
 int main() {
 
-	srand(time(NULL)); //GAMBLING
+	srand(static_cast<unsigned int>(time(nullptr))); //GAMBLING
 
 	//// Making A character Skit
 
@@ -31,7 +34,20 @@ int main() {
 	cout << "I don't really care about what you put, you're playing :)\n\n";
 
 
-	User1.SetGameCharacter();
+	char loadSave;
+	cout << "Load your old save? (y/n): ";
+	cin >> loadSave;
+
+	if (loadSave == 'y' || loadSave == 'Y') {
+		if (!User1.LoadGame()) {
+			cout << "No save found. Starting a new game.\n";
+			User1.SetGameCharacter();
+		}
+	}
+	else {
+		cout << "Starting a brand-new game.\n";
+		User1.SetGameCharacter();
+	}
 
 
 	// LORE?!?!?!?!?!?!?!
@@ -53,6 +69,11 @@ int main() {
 	ContinueStory();
 
 	FightStyle(User1, enemy);
+	if (User1.GetHealth() > 0) {
+		Shop shop;
+		shop.Open(User1);
+	}
+	User1.SaveGame();
 
 	cout << "\nyou did't die, i'm suprised";
 
