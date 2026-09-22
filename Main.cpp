@@ -11,10 +11,11 @@ using namespace std;
 int Inventory[ItemCount] = { 0 };
 
 int main() {
-
+	/////////////         MAKE GENDER FUNCTION THING		 /////////////
 	srand(static_cast<unsigned int>(time(nullptr))); //GAMBLING
 
 	//// Making A character Skit
+	Shop shop;
 
 	string StartGame;
 
@@ -32,7 +33,7 @@ int main() {
 	cin >> StartGame;
 
 	cout << "I don't really care about what you put, you're playing :)\n\n";
-
+	
 
 	char loadSave;
 	cout << "Load your old save? (y/n): ";
@@ -70,8 +71,14 @@ int main() {
 
 	FightStyle(User1, enemy);
 	if (User1.GetHealth() > 0) {
-		Shop shop;
-		shop.Open(User1);
+		string restChoice;
+		cout << "\nYou have survived the fight, Rest and recover your health? (y/n)\n";	
+		cin >> restChoice;
+
+		if (restChoice == "y" || restChoice == "Y") {
+			User1.PlayerRest();
+		}
+
 	}
 	User1.SaveGame();
 

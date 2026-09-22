@@ -26,15 +26,15 @@ void FightStyle(Player& User1, SmallMonsters& Enemy)
 
         if (choice == 1)
         {
-            vector<Weapon::AttackMove> attackMoves = User1.GetAttackMoves();
+			vector<Weapon::AttackMove> attackMoves = User1.GetAttackMoves(); // Get the player's attack moves
 
-            cout << "\nChoose an attack:\n";
+			cout << "\nChoose an attack:\n";// Display the attack moves
             for (int index = 0; index < 3; index++) {
                 cout << index + 1 << ") " << attackMoves[index].name
                     << " (+" << attackMoves[index].bonusDamage << " damage)\n";
             }
 
-            int moveChoice = ReadFromConsole("Choose attack: ", 1, 3);
+			int moveChoice = ReadFromConsole("Choose attack: ", 1, 3); // Get the player's choice of attack move
             Weapon::AttackMove selectedMove = attackMoves[moveChoice - 1];
             int damage = User1.Attack(selectedMove.bonusDamage);
             Enemy.EnemyTakeDamage(damage);
@@ -42,7 +42,7 @@ void FightStyle(Player& User1, SmallMonsters& Enemy)
             cout << "\nYou used " << selectedMove.name << " and dealt "
                 << damage << " damage!\n";
 
-            if (Enemy.GetEnemyHealth() <= 0)
+			if (Enemy.GetEnemyHealth() <= 0)// Check if the enemy is defeated
             {
                 cout << "\nThe monster has been defeated!\n";
                 Enemy.GetLoot();
@@ -55,30 +55,30 @@ void FightStyle(Player& User1, SmallMonsters& Enemy)
             cout << "\nYou defend!\n";
             cout << "Use A health potion? (y/n)";
             cin >> Healing;
-            if (Healing == "y") {
-                /*User1.UseHPPotion();*/
+			if (Healing == "y") {
+				User1.UseHealthPotion();
             }
 
   
         }
         else
         {
-            User1.PissYourSelf();
+			User1.PissYourSelf();// Invalid choice, player takes damage || may make this a random event that happens if the player does not choose a valid option
             continue;
         }
 
         // ENEMY TURN: happens only once
-        int enemyAttack = Enemy.GetEnemyDamage();
+		int enemyAttack = Enemy.GetEnemyDamage();// Get the enemy's attack damage
 
-        if (defending)
+		if (defending)// If the player defended, reduce the enemy's attack damage
         {
-            enemyAttack /= 2;
+            enemyAttack /= 3;
         }
 
-        cout << "\n--- ENEMY TURN ---\n";
+		cout << "\n--- ENEMY TURN ---\n";// Display the enemy's turn
         User1.TakeDamage(enemyAttack);
 
-        if (User1.GetHealth() <= 0)
+		if (User1.GetHealth() <= 0)// Check if the player is dead
         {
             cout << "\nYou have died.\n";
             break;

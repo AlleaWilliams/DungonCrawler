@@ -7,12 +7,12 @@
 using namespace std;
 
 
-class WeaponMaterial {
+class WeaponMaterial {// Abstract base class for weapon materials
 protected:
 	string weaponMaterialName;
 	int weaponMaterialOnAtk;
 public:
-	virtual ~WeaponMaterial() = default;
+	virtual ~WeaponMaterial() = default;// virtual destructor for proper cleanup of derived classes
 
 	const string& getWeaponMaterialName() const { return weaponMaterialName; }// chnges the string name to a const reference to avoid unnecessary copying
 	void setWeaponMaterialName(const string& name) { weaponMaterialName = name; }
@@ -119,11 +119,11 @@ public:
 
 
 
-class Weapon {
+class Weapon {// Class representing a weapon with a type and material
 public:
 	enum class Type { Dagger, ShortBlade, BattleAxe, WarHammer, HeroBlade };
 
-	struct AttackMove {
+	struct AttackMove {// Struct representing an attack move with a name and bonus damage
 		string name;
 		int bonusDamage;
 	};
@@ -133,10 +133,10 @@ private:
 	const WeaponMaterial* material;
 
 public:
-	Weapon(Type type, const WeaponMaterial& weaponMaterial)
+	Weapon(Type type, const WeaponMaterial& weaponMaterial) 
 		: currentWeapon(type), material(&weaponMaterial) {}
 
-	void SetType(Type type) { currentWeapon = type; }
+	void SetType(Type type) { currentWeapon = type; }// Set the weapon type
 	Type GetType() const { return currentWeapon; }
 
 	void SetMaterial(const WeaponMaterial& weaponMaterial) {
@@ -144,13 +144,13 @@ public:
 	}
 
 	const string& GetMaterialName() const {
-		return material->getWeaponMaterialName();
+		return material->getWeaponMaterialName();// Get the name of the weapon material
 	}
 
 	vector<AttackMove> GetRandomAttackMoves() const {
-		vector<AttackMove> moves;
+		vector<AttackMove> moves;// Vector to hold the attack moves
 
-		switch (currentWeapon) {
+		switch (currentWeapon) {// Determine the attack moves based on the weapon type
 		case Type::Dagger:
 			moves = { { "Quick Stab", 1 }, { "Backstab", 3 }, { "Knife Throw", 2 },
 				{ "Slice", 1 }, { "Vital Strike", 4 }, { "Shadow Jab", 2 } };
@@ -173,13 +173,13 @@ public:
 			break;
 		}
 
-		static mt19937 randomEngine(random_device{}());
-		shuffle(moves.begin(), moves.end(), randomEngine);
-		moves.resize(3);
+		static mt19937 randomEngine(random_device{}());// Use a static random engine to avoid reseeding on each call
+		shuffle(moves.begin(), moves.end(), randomEngine);// Shuffle the moves to randomize their order
+		moves.resize(3);// Randomly select 3 moves from the available moves
 		return moves;
 	}
 
-	int GetDamage() const {
+	int GetDamage() const {// Calculate the total damage based on weapon type and material
 		int typeDamage = 0;
 
 		switch (currentWeapon) {

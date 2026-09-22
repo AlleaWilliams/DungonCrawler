@@ -6,6 +6,7 @@
 #include <string>
 #include <fstream>
 #include <memory>
+#include <random>
 
 inline void ContinueAtk() {
 	cout << "\nPress Enter to continue...\n";
@@ -84,6 +85,8 @@ private:
 	BankAccount Mune;
 
 	Inventory Stash;
+	bool isDualWielder = false;
+	bool isEarlyMagicUser = false;
 
 	unique_ptr<WeaponMaterial> CreateMaterial(const string& materialName) const {
 		if (materialName == "Wood") return make_unique<WoodMaterial>();
@@ -96,6 +99,22 @@ private:
 		if (materialName == "Adamantine") return make_unique<adamantineMaterial>();
 
 		return nullptr;
+	}
+
+	void RollStartingTraits() {
+		static std::mt19937 rng(std::random_device{}());
+		std::uniform_int_distribution<int> roll(1, 100);
+
+		isDualWielder = roll(rng) <= 10;
+		isEarlyMagicUser = roll(rng) <= 5;
+
+		if (isDualWielder) {
+			cout << "\nYou have a natural talent for dual wielding!\n";
+		}
+
+		if (isEarlyMagicUser) {
+			cout << "\nYou have awakened early magic potential!\n";
+		}
 	}
 
 public:
@@ -114,6 +133,8 @@ public:
 		saveFile << equippedWeapon.GetMaterialName() << '\n';
 		saveFile << Mune.GetBalance() << '\n';
 		saveFile << Stash.HPpotions << '\n';
+		saveFile << isDualWielder << '\n';
+		saveFile << isEarlyMagicUser << '\n';
 		cout << "\nGame saved!\n";
 	}
 
@@ -129,12 +150,14 @@ public:
 		string savedMaterialName;
 		int savedMune;
 		int savedHealthPotions;
+		bool savedDualWielder;
+		bool savedEarlyMagicUser;
 
 		getline(saveFile, savedName);
 		saveFile >> savedHealth >> savedLevel >> savedBaseAttack >> savedWeaponType;
 		saveFile >> ws;
 		getline(saveFile, savedMaterialName);
-		saveFile >> savedMune >> savedHealthPotions;
+		saveFile >> savedMune >> savedHealthPotions >> savedDualWielder >> savedEarlyMagicUser;
 
 		if (!saveFile || savedWeaponType < 0 ||
 			savedWeaponType > static_cast<int>(Weapon::Type::HeroBlade)) return false;
@@ -148,12 +171,46 @@ public:
 		character.PlayerAttack = savedBaseAttack;
 		Mune.SetBalance(savedMune);
 		Stash.HPpotions = savedHealthPotions;
+		isDualWielder = savedDualWielder;
+		isEarlyMagicUser = savedEarlyMagicUser;
 		equippedMaterial = move(loadedMaterial);
 		equippedWeapon.SetType(static_cast<Weapon::Type>(savedWeaponType));
 		equippedWeapon.SetMaterial(*equippedMaterial);
 
 		cout << "\nSave loaded! Welcome back, " << character.name << ".\n";
 		return true;
+	}
+
+	bool IsDualWielder() const {
+		return isDualWielder;
+	}
+
+	bool IsEarlyMagicUser() const {
+		return isEarlyMagicUser;
+	}
+
+	int PlayerRest() {
+		const int restHealing = 20;
+		const int maximumHealth = 100;
+		if (character.health >= maximumHealth) {
+			cout << "\nYour health is already full.\n";
+			return character.health;
+		}
+		character.health += restHealing;
+		if (character.health > maximumHealth) {
+			character.health = maximumHealth;
+		}
+		cout << "\nYou rested and restored " << restHealing
+			<< " health. Your health is now " << character.health << ".\n";
+		return character.health;
+	}
+
+	int addLevel() {
+		return character.Dungonlevel++;
+	}
+	
+	int GetPlayerLevel() const {
+		return character.Dungonlevel;
 	}
 
 	void AddMune(int amount) {
@@ -175,35 +232,32 @@ public:
 	int GetHealthPotionCount() const {
 		return Stash.HPpotions;
 	}
+
+	bool UseHealthPotion() {
+		const int potionHealing = 20;
+		const int maximumHealth = 100;
+
+		if (Stash.HPpotions <= 0) {
+			cout << "\nYou do not have any health potions.\n";
+			return false;
+		}
+
+		if (character.health >= maximumHealth) {
+			cout << "\nYour health is already full.\n";
+			return false;
+		}
+
+		Stash.HPpotions--;
+		character.health += potionHealing;
+		if (character.health > maximumHealth) {
+			character.health = maximumHealth;
+		}
+
+		cout << "\nYou used a health potion and restored " << potionHealing
+			<< " health. Your health is now " << character.health << ".\n";
+		return true;
+	}
 	
-	//void UseHPPotion()
-	//{
-	//	if (Inventory[HPpotion] > 0)
-	//	{
-	//		if (character.health >= 100)
-	//		{
-	//			cout << "\nYour health is already full!\n";
-	//			return;
-	//		}
-
-	//		Inventory[hPPotion]--;
-
-	//		character.health += 20;
-
-	//		if (character.health > 100)
-	//		{
-	//			character.health = 100;
-	//		}
-	//		cout << "\nYou used an HP potion!";
-	//		cout << "\nYour health is now: "
-	//			<< character.health << "\n";
-	//	}
-	//	else
-	//	{
-	//		cout << "\nYou don't have any HP potions!\n";
-	//	}
-	//}
-
 	void SetGameCharacter() {
 
 		// Setting character name, health and level in THE SYSTEM
@@ -220,6 +274,8 @@ public:
 			cout << "That name is too long. Please try again.\n";
 			character.name.clear();
 		}
+
+		RollStartingTraits();
 
 		cout << "You're starting on level " << character.Dungonlevel;
 

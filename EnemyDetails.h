@@ -117,19 +117,29 @@ private:
 		{
 		case 0:
 			Inventory[pelvis] += amount;
-			cout << amount << " Pelvis";
+			if (amount > 1) {
+				cout << amount << " Pelvises";
+			}
+			else {
+				cout << amount << " Pelvis";
+			}
 			break;
 		case 1:
 			Inventory[boneMarrow] += amount;
-			cout << amount << " Bone marrow";
+				cout << amount << " Bone marrow";
 			break;
 		case 2:
 			Inventory[sturdyFemur] += amount ;
-			cout << amount << " Sturdy fremur(s)";
+			if(amount > 1) {
+				cout << amount << " Sturdy femurs";
+			}
+			else {
+				cout << amount << " Sturdy femur";
+			}
 			break;
 		case 3:
 			Inventory[Mune] += amount * 5;
-			cout << amount + 6 << " mune(s)";
+			cout << amount + 6 << " mune";
 			break;
 
 		}
@@ -141,17 +151,32 @@ private:
 
 		switch (rand() % 4)
 		{
-		case 0: Inventory[ballOfWorms] += amount; 
-			cout << amount << " Ball of worm(s)";
+		case 0: Inventory[ballOfWorms] += amount;
+			if(amount > 1) {
+				cout << amount << " Balls of worms";
+			}
+			else {
+				cout << amount << " Ball of worms";
+			}
 			break;
 		case 1: Inventory[massOfRottenOrgans] += amount;
-			cout << amount << " Mass of rotten organs";
+			if(amount > 1) {
+				cout << amount << " Masses of rotten organs";
+			}
+			else {
+				cout << amount << " Mass of rotten organs";
+			}
 			break;
 		case 2: Inventory[aRib] += amount; 
-			cout << amount << " Rid(s)";
+			if(amount > 1) {
+				cout << amount << " Ribs";
+			}
+			else {
+				cout << amount << " Rib";
+			}
 			break;
 		case 3: Inventory[Mune] += amount;
-			cout << amount + 6 << " mune(s)";
+			cout << amount + 6 << " mune";
 			break;
 
 		}
@@ -164,20 +189,40 @@ private:
 		switch (rand() % 5)
 		{
 		case 0: Inventory[skull] += amount; 
-			cout << amount << " Skull(s)";
+			if (amount > 1) {
+				cout << amount << " Skulls";
+			}
+			else {
+				cout << amount << " Skull";
+			}
 			break;
 		case 1: Inventory[brownCloth] += amount; 
-			cout << amount << " Brown cloth(s)";
+			if(amount > 1) {
+				cout << amount << " Brown cloths";
+			}
+			else {
+				cout << amount << " Brown cloth";
+			}
 			break;
 		case 2: Inventory[claws] += amount; 
-			cout << amount << " Claws(s)";
+			if(amount > 1) {
+				cout << amount << " Claws";
+			}
+			else {
+				cout << amount << " Claw";
+			}
 			break;
-		case 3: Inventory[icyBlueEyes] += amount; 
-			cout << amount << " Icy blue eye(s)";
+		case 3: Inventory[icyBlueEyes] += amount;
+			if(amount > 1) {
+				cout << amount << " Icy blue eyes";
+			}
+			else {
+				cout << amount << " Icy blue eye";
+			}
 			break;
 		case 4: 
 			Inventory[Mune] += amount * 5;
-			cout << amount + 6 << " mune(s)";
+			cout << amount + 6 << " mune";
 			break;
 		}
 	}
@@ -189,20 +234,40 @@ private:
 		switch (rand() % 5)
 		{
 		case 0: Inventory[goldenTooth] += amount; 
-			cout << amount << " Golden tooth(s)";
+			if(amount > 1) {
+				cout << amount << " Golden teeth";
+			}
+			else {
+				cout << amount << " Golden tooth";
+			}
 			break;
 		case 1: Inventory[goblinEar] += amount; 
-			cout << amount << " Goblin ear(s)";
+			if(amount > 1) {
+				cout << amount << " Goblin ears";
+			}
+			else {
+				cout << amount << " Goblin ear";
+			}
 			break;
 		case 2: Inventory[loinCloth] += amount; 
-			cout << amount << " Loin cloth(s)";
+			if(amount > 1) {
+				cout << amount << " Loin cloths";
+			}
+			else {
+				cout << amount << " Loin cloth";
+			}
 			break;
 		case 3: Inventory[hPPotion] += amount; 
-			cout << amount << " HP potion(s)";
+			if(amount > 1) {
+				cout << amount << " HP potions";
+			}
+			else {
+				cout << amount << " HP potion";
+			}
 			break;
 		case 4:
 			Inventory[Mune] += amount * 5;
-			cout << amount + 6 << " mune(s)";
+			cout << amount + 6 << " mune";
 			break;
 		}
 	}
@@ -214,18 +279,38 @@ private:
 		switch (rand() % 5)
 		{
 		case 0: Inventory[mindGoblinEar] += amount;
-			cout << amount << " GoblinEar(s)";
+			if(amount > 1) {
+				cout << amount << " Goblin ears";
+			}
+			else {
+				cout << amount << " Goblin ear";
+			}
 			break;
 		case 1: Inventory[hPPotion] += amount;
-			cout << amount << " HP potion(s)";
+			if(amount > 1) {
+				cout << amount << " HP potions";
+			}
+			else {
+				cout << amount << " HP potion";
+			}
 			break;
 
 		case 2: Inventory[brainMatter] += amount;
-			cout << amount << " Brain matter(s)";
+			if(amount > 1) {
+				cout << amount << " Brain matters";
+			}
+			else {
+				cout << amount << " Brain matter";
+			}
 			break;
 
 		case 3: Inventory[deezNUTS]++;
-			cout << amount << " DEEZNUTS(s)";
+			if(amount > 1) {
+				cout << amount << " DEEZNUTS";
+			}
+			else {
+				cout << amount << " DISNUT";
+			}
 			break;
 		case 4:
 			Inventory[Mune] += amount * 5;
@@ -329,4 +414,3 @@ public:
 
 
 };
-
