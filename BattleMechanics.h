@@ -21,8 +21,7 @@ void FightStyle(Player& User1, SmallMonsters& Enemy)
         bool defending = false;
         string Healing;
 
-        int choice = ReadFromConsole(
-            "\n--- YOUR TURN ---\n1) Attack\n2) Defend\nChoose: ", 1, 2);
+        int choice = ReadFromConsole("\n--- YOUR TURN ---\n1) Attack\n2) Defend\nChoose: ", 1, 2);
 
         if (choice == 1)
         {

@@ -277,8 +277,6 @@ public:
 
 		RollStartingTraits();
 
-		cout << "You're starting on level " << character.Dungonlevel;
-
 		cout << "\nYou have " << character.health << " health. Don't die.";
 
 		ContinueStory();

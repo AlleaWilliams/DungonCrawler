@@ -13,7 +13,6 @@ int Inventory[ItemCount] = { 0 };
 int main() {
 	/////////////         MAKE GENDER FUNCTION THING		 /////////////
 	srand(static_cast<unsigned int>(time(nullptr))); //GAMBLING
-
 	//// Making A character Skit
 	Shop shop;
 
@@ -25,14 +24,10 @@ int main() {
 
 	enemy.GetMonsterType();
 
-	int EnemyHealth = 80;
-	int EnemyHit = 10;
+	/*cout << "Are you willing to risk it (y/n): ";*/
+	/*cin >> StartGame;*/
 
-
-	cout << "Are you willing to risk it (y/n): ";
-	cin >> StartGame;
-
-	cout << "I don't really care about what you put, you're playing :)\n\n";
+	/*cout << "I don't really care about what you put, you're playing :)\n\n";*/
 	
 
 	char loadSave;
