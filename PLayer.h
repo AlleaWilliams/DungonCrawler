@@ -1,5 +1,5 @@
 #pragma once
-
+using namespace std;
 #include "EnemyDetails.h"
 #include "Weapons&Damage.h"
 #include <iostream>
@@ -118,6 +118,7 @@ private:
 	}
 
 public:
+
 	void SaveGame() const {
 		ofstream saveFile("savegame.txt");
 		if (!saveFile.is_open()) {
@@ -275,6 +276,7 @@ public:
 			character.name.clear();
 		}
 
+		transform(character.name.begin(), character.name.end(), character.name.begin(), ::tolower);
 		RollStartingTraits();
 
 		cout << "\nYou have " << character.health << " health. Don't die.";
@@ -282,6 +284,9 @@ public:
 		ContinueStory();
 	}
 
+	string GetPlayerName() {
+		return character.name;
+	}
 
 	vector<Weapon::AttackMove> GetAttackMoves() const {
 		return equippedWeapon.GetRandomAttackMoves();

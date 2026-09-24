@@ -2,6 +2,7 @@
 #include "Shop.h"
 #include "EnemyDetails.h"
 #include "Weapons&Damage.h"
+#include "ConsoleInput.h"
 #include <iostream>
 #include <string>
 #include <ctime>
@@ -14,20 +15,24 @@ int main() {
 	/////////////         MAKE GENDER FUNCTION THING		 /////////////
 	srand(static_cast<unsigned int>(time(nullptr))); //GAMBLING
 	//// Making A character Skit
-	char PlayerName = tolower(static_cast<unsigned char>(name));
+	
+	TestStringUtilities();
+
+	HANDLE hConsoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
 
 	Shop shop;
 
-	string StartGame;
+	
 
 	Player User1;
 
 	SmallMonsters enemy;
 
+
 	enemy.GetMonsterType();
 
-	cout << "Are you willing to risk it (y/n): ";
-	cin >> StartGame;*/
+	/*cout << "Are you willing to risk it (y/n): ";*/
+	string BossBattle = ChoseFromConsole("Are you willing to risk it(y / n)  ");
 
 	cout << "I don't really care about what you put, you're playing :)\n\n";
 	
@@ -64,7 +69,7 @@ int main() {
 	cout << "\nYou must fight for your life to make it out of this hell,";
 	cout << "\nor die being the loser son of the former hero.";
 
-	cout << "\n\nVenture out "<< PlayerName <<" if for nothing then for the truth of this place.\n"
+	cout << "\n\nVenture out " << User1.GetPlayerName() << " if for nothing then for the truth of this place.\n";
 
 	ContinueStory();
 
@@ -82,7 +87,22 @@ int main() {
 	User1.SaveGame();
 
 	cout << "\nyou did't die, i'm suprised";
+	ContinueStory();
 
+	cout << "Now do it again";
+	FightStyle(User1, enemy);
+	
+	cout << "you have earned shopping privileges";
+	ContinueStory();
+
+	shop.Open(User1);
+
+	cout << "your on your own now claw your way out, if you can";
+	FightStyle(User1, enemy);
+	FightStyle(User1, enemy);
+
+	cout << "thank you for beta testing \nyea this was for a grade but im gonna give in proper lore and bossed and escaple room like puzzles";
+	cout << "i now have to comiit it to this so im making everyone suffer";
 	return 0;
 
 }
