@@ -14,6 +14,8 @@ int main() {
 	/////////////         MAKE GENDER FUNCTION THING		 /////////////
 	srand(static_cast<unsigned int>(time(nullptr))); //GAMBLING
 	//// Making A character Skit
+	char PlayerName = tolower(static_cast<unsigned char>(name));
+
 	Shop shop;
 
 	string StartGame;
@@ -24,10 +26,10 @@ int main() {
 
 	enemy.GetMonsterType();
 
-	/*cout << "Are you willing to risk it (y/n): ";*/
-	/*cin >> StartGame;*/
+	cout << "Are you willing to risk it (y/n): ";
+	cin >> StartGame;*/
 
-	/*cout << "I don't really care about what you put, you're playing :)\n\n";*/
+	cout << "I don't really care about what you put, you're playing :)\n\n";
 	
 
 	char loadSave;
@@ -61,6 +63,8 @@ int main() {
 
 	cout << "\nYou must fight for your life to make it out of this hell,";
 	cout << "\nor die being the loser son of the former hero.";
+
+	cout << "\n\nVenture out "<< PlayerName <<" if for nothing then for the truth of this place.\n"
 
 	ContinueStory();
 
