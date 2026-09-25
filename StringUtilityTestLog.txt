@@ -1,0 +1,14 @@
+PASS: ChoseFromConsole()
+Expected: hello world
+Actual: hello world
+
+PASS: ChoseFromConsole() second test
+Expected: Player
+Actual: Player
+
+============================
+TEST SUMMARY
+============================
+Total Tests: 2
+Passed: 2
+Failed: 0

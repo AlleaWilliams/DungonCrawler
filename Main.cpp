@@ -3,6 +3,7 @@
 #include "EnemyDetails.h"
 #include "Weapons&Damage.h"
 #include "ConsoleInput.h"
+#include <windows.h>
 #include <iostream>
 #include <string>
 #include <ctime>
